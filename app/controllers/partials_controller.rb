@@ -29,6 +29,7 @@ class PartialsController < ApplicationController
   # POST /partials.json
   def create
     @partial = Partial.new(partial_params)
+    @partial.user = current_user
 
     respond_to do |format|
       if @partial.save
