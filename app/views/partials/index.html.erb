@@ -1,0 +1,31 @@
+<h1>Listing partials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Post</th>
+      <th>Background color</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @partials.each do |partial| %>
+      <tr>
+        <td><%= partial.text %></td>
+        <td><%= partial.post %></td>
+        <td><%= partial.background_color %></td>
+        <td><%= partial.user %></td>
+        <td><%= link_to 'Show', partial %></td>
+        <td><%= link_to 'Edit', edit_partial_path(partial) %></td>
+        <td><%= link_to 'Destroy', partial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Partial', new_partial_path %>
