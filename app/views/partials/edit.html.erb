@@ -1,6 +1,5 @@
-<h1>Editing partial</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @partial %> |
-<%= link_to 'Back', partials_path %>
+<%- model_class = Partial -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Partial %></h1>
+</div>
+<%= render :partial => 'form' %>

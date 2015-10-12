@@ -1,24 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Partial -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Partial %></h1>
+</div>
 
-<p>
-  <strong>Text:</strong>
-  <%= @partial.text %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:text) %></dt>
+      <dd><pre class="prettyprint"><%= @partial.text %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:background_color) %></dt>
+      <dd><pre class="prettyprint"><%= @partial.background_color %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Post:</strong>
-  <%= @partial.post %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              partials_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_partial_path(@partial), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              partial_path(@partial),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Background color:</strong>
-  <%= @partial.background_color %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @partial.user %>
-</p>
-
-<%= link_to 'Edit', edit_partial_path(@partial) %> |
-<%= link_to 'Back', partials_path %>
