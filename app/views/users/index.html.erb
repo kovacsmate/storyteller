@@ -1,0 +1,30 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => User %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:username) %></th>
+      <th>Followers</th>
+      <th>Registered</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+        <td><%= user.get_likes.size %></td>
+        <td><%=l user.created_at, format: :long %></td>
+        <td>
+          <%= link_to vote_user_path(user, :direction => 'like'), :method => :get, :class => 'btn btn-sm', :title => "Like" do %>
+            <%= 'Follow' %>
+          <%- end -%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

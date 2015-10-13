@@ -3,11 +3,21 @@ Rails.application.routes.draw do
   #->Prelang (voting/acts_as_votable)
   member do
     get "vote"
-    put "like", to: "posts#upvote"
   end
 end
 
   root 'posts#index'
+
+  #get 'users/:id' => 'users#show'
+  #get 'users/:id/vote' => 'users#vote'
+  #get 'users' => 'users#index'
+
+  resources :users, only: [:index, :show] do
+  member do
+    get "vote"
+  end
+end
+
   resources :partials
 
   resources :comments
