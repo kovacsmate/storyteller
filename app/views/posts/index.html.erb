@@ -7,6 +7,7 @@
     <tr>
       <th>ID</th>
       <th><%= model_class.human_attribute_name(:title) %></th>
+      <th>Likes</th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -16,14 +17,17 @@
       <tr>
         <td><%= post.id %></td>
         <td><%= post.title %></td>
+        <td><%= post.get_likes.size %></td>
         <td><%=l post.created_at, format: :long %></td>
         <td>
-          <%= link_to post_path(post), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <%= glyph 'info-sign' %>
-            <%= glyph 'pencil' %>
+          <%= link_to post_path(post), :class => 'btn btn-sm', :title => "#Show" do %>
+            <%= 'Show' %>
           <%- end -%>
-          <%= link_to post_path(post), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-            <%= glyph 'remove' %>
+          <%= link_to post_path(post), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-sm', :title => "Delete" do %>
+            <%= 'Remove' %>
+          <%- end -%>
+          <%= link_to vote_post_path(post, :direction => 'like'), :method => :get, :class => 'btn btn-sm', :title => "Like" do %>
+            <%= 'Like' %>
           <%- end -%>
         </td>
       </tr>

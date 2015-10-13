@@ -72,12 +72,10 @@ ActiveRecord::Schema.define(version: 20151012131517) do
   create_table "posts", force: true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["comment_id"], name: "index_posts_on_comment_id"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "users", force: true do |t|

@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
 
   attr_accessor :login
-  
+
   #->Prelang (user_login:devise/username_login_support)
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -41,6 +41,5 @@ class User < ActiveRecord::Base
 
 
   devise authentication_keys: [:login]
-  validates_formatting_of :website, using: :url
-  acts_as_votable 
+  acts_as_votable
 end

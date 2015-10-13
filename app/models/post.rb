@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  belongs_to :comment
+  has_many :comments
   has_many :partials
-  acts_as_votable 
+  acts_as_votable
 end

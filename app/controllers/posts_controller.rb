@@ -66,7 +66,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   #->Prelang (voting/acts_as_votable)
   def vote
 

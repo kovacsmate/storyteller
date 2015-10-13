@@ -11,7 +11,7 @@
       <%= f.text_field :background_color, :class => 'text-field form-control' %>
     </div>
   </div>
-
+<%= f.hidden_field :post_id,:value=> params[:post_id] , :class => 'text-field form-control' %>
   <div class="form-group">
     <div class='col-md-offset-2 col-md-10'>
       <%= f.submit nil, :class => 'btn btn-primary' %>

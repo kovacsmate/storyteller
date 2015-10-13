@@ -30,6 +30,7 @@ class PartialsController < ApplicationController
   def create
     @partial = Partial.new(partial_params)
     @partial.user = current_user
+    @partial.post = Post.find_by_id(partial_params[:post_id])
 
     respond_to do |format|
       if @partial.save

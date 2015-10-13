@@ -8,9 +8,25 @@
       <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
       <dd><pre class="prettyprint"><%= @post.title %></pre></dd>
   </dl>
+  <dl>
+      <dt class="label label-default">Post</dt>
+      <% @post.partials.each do |partial| %>
+      <dd><pre class="prettyprint"><%= partial.text %></pre></dd>
+      <% end %>
+  </dl>
+  <dl>
+      <dt class="label label-default">Comments</dt>
+      <% @post.comments.each do |comment| %>
+      <dd><strong><pre class="prettyprint"><%= comment.user.username %></strong><br><pre class="prettyprint"><%= comment.text %></pre></dd>
+      <% end %>
+  </dl>
 </div>
 
 <div class="form-group">
+  <%= link_to t('.add_partial', :default => t("Add partial")),
+              new_partial_path(:post_id => '1'), :class => 'btn btn-default'  %>
+  <%= link_to t('.add_comment', :default => t("Comment")),
+              new_comment_path(:post_id => '1'), :class => 'btn btn-default'  %>
   <%= link_to t('.back', :default => t("helpers.links.back")),
               posts_path, :class => 'btn btn-default'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -21,4 +37,3 @@
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>
-

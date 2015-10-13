@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user = current_user
+    @comment.post = Post.find_by_id(comment_params[:post_id])
 
     respond_to do |format|
       if @comment.save
